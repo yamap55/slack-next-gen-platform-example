@@ -1,0 +1,44 @@
+// ref. https://github.com/Microsoft/vscode-remote-try-python
+{
+  "name": "slack-random-choice",
+  // Use docker-compose.extend.yml to run a command that keeps the container running.
+  "dockerComposeFile": ["./docker-compose.yml"],
+  "service": "slack-random-choice",
+  "workspaceFolder": "/project",
+  "shutdownAction": "stopCompose",
+  // Comment out the next line to run as root instead. Linux users,
+  // update Dockerfile with your user's UID/GID if not 1000.
+  "remoteUser": "vscode",
+  // Use 'settings' to set *default* container specific settings.json values on container create.
+  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  "settings": {
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash"
+      }
+    },
+    "vsintellicode.modify.editor.suggestSelection": "enabled",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "[json]": {
+      "editor.tabSize": 2
+    },
+    "[yaml]": {
+      "editor.tabSize": 2
+    }
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "exiasr.hadolint",
+    "usernamehw.errorlens"
+  ]
+  // "postStartCommand": "
+}

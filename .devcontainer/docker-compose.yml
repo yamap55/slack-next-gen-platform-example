@@ -1,0 +1,15 @@
+version: "3"
+services:
+  slack-random-choice:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        WORKDIR: /project
+    volumes:
+      - ..:/project
+      - ${USERPROFILE-~}/.ssh:/home/vscode/.ssh
+    image: slack-random-choice-image
+    container_name: slack-random-choice
+    tty: true
+    env_file: ../.env # shellスクリプト内でも環境変数として使用するため
