@@ -6,10 +6,11 @@ RUN echo $TZ > /etc/timezone
 ARG WORKDIR=/project
 WORKDIR ${WORKDIR}
 
-# Or your actual UID, GID on Linux if not the default 1000
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+# user settigns
+ARG USERNAME=deno
+RUN usermod -s /bin/bash $USERNAME \
+    && mkdir /home/deno \
+    && chown deno:deno /home/deno
 
 # change default shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -33,14 +34,6 @@ RUN rm -rf /var/lib/apt/lists/* \
 # install hadolint
 RUN wget --progress=dot:giga https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O /usr/local/bin/hadolint \
     && chmod +x /usr/local/bin/hadolint
-
-
-# Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    # Add sudo support for non-root user
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
 
 USER $USERNAME
 

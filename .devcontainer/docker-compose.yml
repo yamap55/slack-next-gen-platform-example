@@ -8,7 +8,7 @@ services:
         WORKDIR: /project
     volumes:
       - ..:/project
-      - ${USERPROFILE-~}/.ssh:/home/vscode/.ssh
+      - ${USERPROFILE-~}/.ssh:/home/deno/.ssh
     image: slack-random-choice-image
     container_name: slack-random-choice
     tty: true
