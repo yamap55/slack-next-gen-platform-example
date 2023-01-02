@@ -6,9 +6,6 @@ RUN echo $TZ > /etc/timezone
 ARG WORKDIR=/project
 WORKDIR ${WORKDIR}
 
-ARG USERNAME=deno
-ARG USER_GID=1000
-
 # change default shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN chsh -s /bin/bash
@@ -31,16 +28,6 @@ RUN rm -rf /var/lib/apt/lists/* \
 # install hadolint
 RUN wget --progress=dot:giga https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O /usr/local/bin/hadolint \
     && chmod +x /usr/local/bin/hadolint
-
-# user settigns
-RUN groupmod --gid $USER_GID $USERNAME \
-    && usermod --shell /bin/bash --uid $USER_GID --gid $USER_GID $USERNAME \
-    && mkdir /home/deno \
-    && chown deno:deno /home/deno \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
-USER $USERNAME
 
 # terminal setting
 RUN wget --progress=dot:giga https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash \
