@@ -11,6 +11,13 @@
   // Use 'settings' to set *default* container specific settings.json values on container create.
   // You can edit these settings after create using File > Preferences > Settings > Remote.
   "settings": {
+    "deno.enable": true,
+    "deno.lint": true,
+    "deno.unstable": true,
+    "deno.suggest.imports.hosts": {
+      "https://deno.land": false
+    },
+    "editor.tabSize": 2,
     "files.eol": "\n",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
@@ -29,6 +36,10 @@
     },
     "[yaml]": {
       "editor.tabSize": 2
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno"
     }
   },
   "extensions": [
