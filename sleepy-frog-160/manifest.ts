@@ -1,16 +1,16 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
+import { workflow as ExampleWorkflow } from "./example.ts";
 
-/**
- * The app manifest contains the app's configuration. This
- * file defines attributes like app name and description.
- * https://api.slack.com/future/manifest
- */
 export default Manifest({
-  name: "sleepy-frog-160",
-  description: "A blank template for building Slack apps with Deno",
+  name: "distracted-bison-253",
+  description: "Example workflow",
   icon: "assets/default_new_app_icon.png",
-  functions: [],
-  workflows: [],
+  workflows: [ExampleWorkflow],
   outgoingDomains: [],
-  botScopes: ["commands", "chat:write", "chat:write.public"],
+  botScopes: [
+    "commands", // 最低限一つの bot scope が必要
+    "channels:read", // channel_created トリガーに必要
+    "chat:write", // メッセージを投稿するための基本的な権限
+    "chat:write.public", // public channel に参加することなくメッセージを投稿する権限
+  ],
 });
