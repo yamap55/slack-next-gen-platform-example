@@ -20,10 +20,13 @@ RUN /bin/echo -e "\n\
 RUN rm -rf /var/lib/apt/lists/* \
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get -y --no-install-recommends install sudo vim tzdata less wget ca-certificates git openssh-client \
+    && apt-get -y --no-install-recommends install sudo vim tzdata less wget curl ca-certificates git openssh-client \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Slack CLI install
+RUN curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash
 
 # install hadolint
 RUN wget --progress=dot:giga https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O /usr/local/bin/hadolint \
