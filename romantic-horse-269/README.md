@@ -1,5 +1,7 @@
 # Deno Blank Template
 
+** ref. https://qiita.com/seratch/items/d3c2d2d9f44551473fb5 **
+
 This is a blank Deno template used to build out apps using the Slack CLI.
 
 **Guide Outline**:
