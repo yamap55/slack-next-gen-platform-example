@@ -1,6 +1,6 @@
 version: "3"
 services:
-  slack-random-choice:
+  slack-next-gen-platform-example:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
@@ -8,7 +8,7 @@ services:
         WORKDIR: /project
     volumes:
       - ..:/project
-    image: slack-random-choice-image
-    container_name: slack-random-choice
+    image: slack-next-gen-platform-example-image
+    container_name: slack-next-gen-platform-example
     tty: true
     env_file: ../.env # shellスクリプト内でも環境変数として使用するため

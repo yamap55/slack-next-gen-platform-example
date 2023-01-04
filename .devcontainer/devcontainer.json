@@ -1,11 +1,11 @@
 // ref. https://github.com/Microsoft/vscode-remote-try-python
 {
-  "name": "slack-random-choice",
+  "name": "slack-next-gen-platform-example",
   // Use docker-compose.extend.yml to run a command that keeps the container running.
   "dockerComposeFile": [
     "./docker-compose.yml"
   ],
-  "service": "slack-random-choice",
+  "service": "slack-next-gen-platform-example",
   "workspaceFolder": "/project",
   "shutdownAction": "stopCompose",
   // Use 'settings' to set *default* container specific settings.json values on container create.
