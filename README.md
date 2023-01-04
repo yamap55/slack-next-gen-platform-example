@@ -1,6 +1,8 @@
-# slack-random-choice
+# slack-next-gen-platform-example
 
-### 開発手順
+本リポジトリは [Slack 次世代プラットフォーム機能を少しずつ試す](https://qiita.com/seratch/items/b1449132add003e61de6) を試すためのリポジトリです
+
+## 開発手順
 
 1. VS Code 起動
 2. 左下の緑色のアイコンクリック
